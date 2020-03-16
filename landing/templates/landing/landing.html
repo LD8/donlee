@@ -1,21 +1,128 @@
 {% extends 'landing/base.html' %}
+{% load static %}
 
 {% block content %}
 
-<section class="PS">
-bad
-</section>
+<!-- LANDING COVER -->
+<div class="landing-cover rellax" data-rellax-speed="-5">
 
-<section class="project">
+    <video autoplay muted loop playsinline id="coverVideo" poster="{% static 'landing/videos/time_poster.png' %}">
+        <source src="{% static 'landing/videos/time.webm' %}" type="video/webm">
+    </video>
 
-</section>
+    <div class="intro rellax" data-rellax-speed="-5">
+        <h1 class="font-bungee wow flipInX" data-wow-delay="0.2s">Don Lee</h1>
+        <h5 class="font-baloo font-weight-light text-shadow-light wow flipInX " data-wow-delay="0.5s">
+            A creative developer | experimental photographer | meditator</h5>
+        <a href="#projects" class="font-baloo btn btn-sm btn-info rounded-sm mt-3 mt-lg-5 px-3 py-1 wow flipInX"
+            data-wow-delay="0.7s">
+            find out more</a>
+    </div>
+    <button id="myBtn" onclick="myFunction()" class="btn btn-sm btn-outline-light rounded-sm px-4 wow flipInX rellax"
+        data-wow-delay="1s">&#9658
+        &#10074&#10074</button>
 
-<section class="education">
+</div>
 
-</section>
 
-<section class="language">
+<!-- LANDING MAIN -->
+<main class="landing-main rounded-lg">
 
-</section>
+
+    <!-- PROJECTS -->
+    <a id="projects"></a>
+    <div class="projects text-center">
+        <h1 class="font-bungee bust wow fadeInDown">Projects</h1>
+        <div class="covers row wow fadeInUp" data-wow-delay="0.5s">
+
+            <div class="cover col-12 col-md-4 rellax" data-rellax-speed="-1" data-rellax-xs-speed="0">
+                <img src="{% static 'landing/img/VA.jpg' %}" class="project-img rounded shadow" alt="project 1">
+                <div class="project-img-overlay m-0">
+                    <p>something here</p>
+                </div>
+            </div>
+
+            <div class="cover col-12 col-md-4 rellax" data-rellax-speed="0.3" data-rellax-xs-speed="0">
+                <img src="{% static 'landing/img/metta.jpg' %}" class="project-img rounded shadow" alt="project 2">
+                <div class="project-img-overlay">
+
+                </div>
+
+            </div>
+
+            <div class="cover col-12 col-md-4 m-0 rellax" data-rellax-speed="-0.3" data-rellax-xs-speed="0">
+                <img src="{% static 'landing/img/artist.jpg' %}" class="project-img rounded shadow" alt="project 3">
+                <div class="project-img-overlay">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /PROJECTS -->
+
+
+
+    <!-- ABOUT -->
+    <div class="about">
+        <h1 class="font-bungee bust text-center">About Don</h1>
+        <div class="d-flex justify-content-around font-baloo">
+            <div class="about-content rellax" data-rellax-speed="-1.5" data-rellax-xs-speed="0">
+                <section>
+                    <h5>With passion in design and coding</h5>
+                    <p>Gradually growing into a web developer as well as a thinker, a designer and a global team player</p>
+                </section>
+                <hr>
+                <section class="row">
+                    <a target="_blank" href="{% static 'landing/file/中英文PEIWEN_LI_RESUME.pdf' %}" class="w-100 col-sm-7 col-md-4 m-2 btn btn-sm btn-secondary wow">Download Resume</a>
+                    <a href="mailto:don_lee@me.com"
+                        class="w-100 col-sm-7 col-md-4 m-2 btn btn-sm btn-outline-secondary wow">Email Me</a>
+                </section>
+            </div>
+
+            <div class="rellax" data-rellax-speed="1.3" data-rellax-xs-speed="0">
+                <img src="{% static 'landing/img/portrait.png' %}" class="self-portrait rounded-lg" alt="self-portrait">
+            </div>
+
+        </div>
+    </div>
+    <!-- /ABOUT -->
+
+
+
+
+</main>
+
+<!-- footer -->
+<footer class="footer shadow-lg d-flex flex-column align-items-center font-baloo">
+    <div class="mt-5">
+        <a href="https://github.com/LD8" class="text-center"><img src="{% static 'landing/img/github.png' %}" height="40px" alt="github logo"></a>
+    </div>
+    <div class="mt-5">
+        <a class="col-3" target="_blank" href="https://ld8.github.io/blog">Blog</a>
+        <a class="col-3" target="_blank" href="{% static 'landing/file/中英文PEIWEN_LI_RESUME.pdf' %}">CV</a>
+        <a class="col-3" href="mailto:don_lee@me.com">Email</a>
+    </div>
+</footer>
+
+<script>
+    // Get the video
+    var video = document.getElementById("coverVideo");
+
+    // Get the button
+    var btn = document.getElementById("myBtn");
+
+    // Pause and play the video, and change the button text
+    function myFunction() {
+        if (video.paused) {
+            video.play();
+            btn.innerHTML = "&#10074&#10074";
+        } else {
+            video.pause();
+            btn.innerHTML = "&#9658";
+        }
+    }
+</script>
+
 
 {% endblock content %}

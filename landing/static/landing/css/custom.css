@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap");
+/* ------------------- OVERALL SETTINGS ------------------- */
+html {
+  scroll-behavior: smooth; }
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  color: #555555;
+  background-color: #f4f8f6;
+  z-index: -10; }
+
+/* ---------- FONTS --------- */
+.font-baloo {
+  font-family: 'Baloo Chettan 2', Arial, Helvetica, sans-serif; }
+
+.font-bungee {
+  font-family: 'Bungee Inline', 'Courier New', Courier; }
+
+/* ---------- FONT STYLES --------- */
+.text-shadow-light {
+  font-weight: normal;
+  text-shadow: 0 0 0.1em rgba(255, 233, 204, 0.336);
+  margin: 0 0 1em; }
+
+/* ---------- POSITION --------- */
+.absolute {
+  position: absolute; }
+
+.relative {
+  position: relative; }
+
+.sticky {
+  position: sticky; }
+
+.fixed {
+  position: fixed; }
+
+/* ------------------- LANDING COVER ------------------- */
+.landing-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #696b4e;
+  z-index: 0; }
+  .landing-cover #coverVideo {
+    /* Center the video */
+    position: absolute;
+    /* Make video to at least 100% wide and tall */
+    min-width: 100%;
+    min-height: 100%;
+    /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+    width: auto;
+    height: auto; }
+  .landing-cover .intro {
+    position: absolute;
+    color: #0080a0;
+    left: 10%;
+    top: 25%; }
+    .landing-cover .intro h1 {
+      font-size: 5em; }
+  .landing-cover button#myBtn {
+    position: absolute;
+    bottom: 10%;
+    left: 10%; }
+
+@media only screen and (max-width: 768px) {
+  .landing-cover .intro {
+    position: absolute;
+    color: #0080a0;
+    left: 5%;
+    top: 20%; }
+    .landing-cover .intro h1 {
+      font-size: 3em; }
+  .landing-cover button#myBtn {
+    left: 5%; } }
+/* ------------------- LANDING MAIN ------------------- */
+.landing-main {
+  /* ---------- MAIN OVERALL --------- */
+  overflow: hidden;
+  position: relative;
+  top: 100vh;
+  margin: 0 20px;
+  background-color: #f4f8f6;
+  z-index: 1; }
+  .landing-main h1.bust {
+    font-size: 8vw;
+    color: rgba(64, 126, 134, 0.267); }
+
+@media only screen and (max-width: 768px) {
+  .landing-main {
+    margin: 0 10px; }
+    .landing-main h1.bust {
+      font-size: 13vw;
+      color: rgba(3, 164, 185, 0.267); } }
+/* ---------- PROJECTS --------- */
+.landing-main .projects {
+  padding: 4vh 0 0 0;
+  z-index: 2; }
+  .landing-main .projects .covers {
+    padding: 0 0 20vh 0; }
+    .landing-main .projects .covers .cover {
+      padding: 3vh 1vw; }
+      .landing-main .projects .covers .cover .project-img {
+        width: 100%;
+        height: auto;
+        transition: .5s ease-in-out; }
+      .landing-main .projects .covers .cover .project-img-overlay {
+        transition: .5s ease-in-out;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center; }
+    .landing-main .projects .covers .cover:hover .project-img {
+      opacity: 0.3; }
+    .landing-main .projects .covers .cover:hover .project-img-overlay {
+      opacity: 1; }
+
+@media only screen and (max-width: 768px) {
+  .landing-main .projects .covers {
+    padding: 0 0 10vh 0; } }
+/* ---------- ABOUT --------- */
+.landing-main .about {
+  padding: 0 0 20vh 0; }
+  .landing-main .about .self-portrait {
+    height: auto;
+    width: 100%; }
+
+@media only screen and (max-width: 768px) {
+  .landing-main .about {
+    padding: 0 10px 20vh 10px; }
+    .landing-main .about .about-content {
+      text-align: center; }
+    .landing-main .about .self-portrait {
+      display: none; } }
+/* ------------------- FOOTER ------------------- */
+.footer {
+  position: relative;
+  top: 100vh;
+  height: 320px;
+  background-color: #383838;
+  z-index: 3;
+  color: cornsilk; }
+  .footer a {
+    color: rgba(255, 248, 220, 0.673);
+    text-decoration: none; }
+  .footer a:hover {
+    color: #de9700;
+    text-decoration: none; }
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    height: 260px; } }
+
+/*# sourceMappingURL=custom.css.map */

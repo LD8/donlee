@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,15 +57,9 @@
 <body id="bootstrap-override" class="">
     <a id="top"></a>
 
-    {% include 'landing/includes/nav.html' %}
 
-    <main class="container">
+    {% block content %}{% endblock content %}
 
-        {% block content %}{% endblock content %}
-
-    </main>
-
-    {% include 'landing/includes/footer.html' %}
 
     <!-- bootstrap js -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -78,8 +73,10 @@
         crossorigin="anonymous"></script>
     <!-- wow.js -->
     <script src="{% static 'landing/js/wow.min.js' %}"></script>
+    <script src="{% static 'landing/js/rellax.min.js' %}"></script>
     <script>
         new WOW().init();
+        var rellax = new Rellax('.rellax');
     </script>
 </body>
 
