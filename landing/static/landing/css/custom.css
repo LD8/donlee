@@ -118,7 +118,7 @@ body {
         -ms-transform: translate(-50%, -50%);
         text-align: center; }
     .landing-main .projects .covers .cover:hover .project-img {
-      opacity: 0.3; }
+      opacity: 0.2; }
     .landing-main .projects .covers .cover:hover .project-img-overlay {
       opacity: 1; }
 
