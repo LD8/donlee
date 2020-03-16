@@ -10,25 +10,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Don Lee's website page, displaying his work">
+    <meta name="description" content="Don Lee's website page, displaying his work, his blog, his passion">
     <meta name=”robots” content=”index”>
 
     <!-- open graph tags for social media -->
     <meta property="og:site_name" content="Don Lee">
     <meta property="og:title" content="Don Lee" />
-    <meta property="og:description" content="Don Lee's website page, displaying his work" />
+    <meta property="og:description" content="Don Lee's website page, displaying his work, his blog, his passion" />
     <!-- to be updated -->
-    <meta property="og:image" itemprop="image" content="http://">
-    <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="600">
-    <meta property="og:image:height" content="600">
-    <meta property="og:type" content="product" />
+    <meta property="og:image" itemprop="image" content="https://donlee.online/static/landing/img/logo-bright.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="256">
+    <meta property="og:image:height" content="256">
+    <meta property="og:type" content="website" />
     <!-- to be updated -->
-    <meta property="og:updated_time" content="1583934971" />
+    <meta property="og:updated_time" content="1584373989" />
     <meta property="og:url" content="https://donlee.online" />
 
     <!-- title icon -->
-    <link rel="icon" type="image/gif/png" href="{% static 'landing/img/logo.png' %}">
+    <link rel="icon" type="image/gif/png" href="{% static 'landing/img/logo-bright.png' %}">
 
     <!-- fontawesome css -->
     <!-- <script type="text/javascript">
@@ -51,15 +51,13 @@
     <!-- customised css -->
     <link rel="stylesheet" type="text/css" href="{% static 'landing/css/custom.css' %}">
 
-    <title>Don Lee</title>
+    <title>Don Lee's Portfolio | Blog | Passion</title>
 </head>
 
 <body id="bootstrap-override" class="">
     <a id="top"></a>
 
-
     {% block content %}{% endblock content %}
-
 
     <!-- bootstrap js -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
