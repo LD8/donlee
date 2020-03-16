@@ -125,4 +125,4 @@ MEDIA_URL = '/media/'
 LOGIN_URL = 'users:login'
 
 
-DEBUG = True
+# DEBUG = True
