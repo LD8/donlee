@@ -74,14 +74,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'donlee.wsgi.application'
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'donlee',
-    #     'USER': 'va_db_admin',
-    #     'PASSWORD': os.environ.get('DB_PASSWD'),
-    #     'HOST': 'localhost',
-    #     'PORT': '',
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'donlee',
+        'USER': 'va_db_admin',
+        'PASSWORD': os.environ.get('DB_PASSWD'),
+        'HOST': 'localhost',
+        'PORT': '',
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
