@@ -2,9 +2,33 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'g*z$*p^@aasfk$7=mwm31!77ku5-l6u=fb#kxag*4u)ombxo7o'
+DEBUG = False
 
-DEBUG = True
+# local/dev setting
+if not os.environ.get('USE_PROD_DB', None):
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = 'g*z$*p^@aasfk$7=mwm31!77ku5-l6u=fb#kxag*4u)ombxo7o'
+    ALLOWED_HOSTS = [
+        'localhost',
+    ]
+
+# server/prod setting
+else:
+    SECRET_KEY = os.getenv('SECRET_KEY')
+
+    ALLOWED_HOSTS = [
+        'donlee.online',
+        '5.63.152.4',
+        'localhost',
+    ]
+
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    # SECURE_HSTS_SECONDS = 600 #https://docs.djangoproject.com/en/3.0/ref/middleware/#http-strict-transport-security
+
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 ALLOWED_HOSTS = []
 
@@ -50,10 +74,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'donlee.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'donlee',
+    #     'USER': 'va_db_admin',
+    #     'PASSWORD': os.environ.get('DB_PASSWD'),
+    #     'HOST': 'localhost',
+    #     'PORT': '',
+    # }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -76,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -89,3 +117,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
+
+
+# for image uplaoding
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+LOGIN_URL = 'users:login'
+
+
+# DEBUG = True
