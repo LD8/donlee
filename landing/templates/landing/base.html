@@ -4,7 +4,15 @@
 <html lang="en">
 
 <head>
-    <!-- Global site tag - gtag.js - Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160807655-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-160807655-1');
+    </script>
 
     <!-- General meta data -->
     <meta charset="UTF-8">
@@ -75,8 +83,8 @@
     <script>
         new WOW().init();
         var rellax = new Rellax('.rellax', {
-    breakpoints: [576]
-  });
+            breakpoints: [576]
+        });
     </script>
 </body>
 
