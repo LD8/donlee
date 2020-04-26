@@ -10,6 +10,7 @@ if not os.environ.get('USE_PROD_DB', None):
     SECRET_KEY = 'g*z$*p^@aasfk$7=mwm31!77ku5-l6u=fb#kxag*4u)ombxo7o'
     ALLOWED_HOSTS = [
         'localhost',
+        '127.0.0.1'
     ]
 
 # server/prod setting
@@ -31,6 +32,12 @@ else:
 
 INSTALLED_APPS = [
     'landing',
+    'api',
+    'frontend',
+    
+    # third party addon
+    'rest_framework',
+    'corsheaders',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +50,10 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+
+    # django-cors-header addon
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -125,4 +136,24 @@ MEDIA_URL = '/media/'
 LOGIN_URL = 'users:login'
 
 
-# DEBUG = True
+
+# Enable CORS(Cross Origin Resrouce Sharing) for all domains, allow all domains to access api
+CORS_ORIGIN_ALLOW_ALL = True
+
+# Or you can whitelist them
+CORS_ORIGIN_WHITELIST = [
+    "http://192.168.101.52:3000",
+    "https://donlee.online",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+# NOTE: it is a good idea to disable the browseable API in production with this configuration:
+# REST_FRAMEWORK = {
+#     'DEFAULT_RENDERER_CLASSES': (
+#         'rest_framework.renderers.JSONRenderer',
+#     )
+# }
+
+DEBUG = True
+
