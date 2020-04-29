@@ -1,4 +1,7 @@
-
+node_modules
+media
+.backup
+.vscode
 .pip/
 
 migrations/*

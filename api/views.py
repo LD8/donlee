@@ -1,13 +1,28 @@
-from django.shortcuts import render
-# from django.shortcuts import get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-# from rest_framework.views import APIView
 from .models import Post, Tag, Showcase, Label, Tech
-from .serializers import PostSerializer, ShowcaseSerializer
-
+from .serializers import PostSerializer, ShowcaseSerializer, LabelSerializer, TagSerializer
 from rest_framework import generics
-# from rest_framework import mixins
+
+
+class LabelListView(generics.ListAPIView):
+    queryset = Label.objects.all()
+    serializer_class = LabelSerializer
+
+
+class ShowcaseLabelQ(generics.ListAPIView):
+    serializer_class = ShowcaseSerializer
+
+    def get_queryset(self):
+        label = get_object_or_404(Label, pk=self.kwargs['label_pk'])
+        return Showcase.objects.filter(labels=label)
+
+
+# will finish post tag searching later
+# class TagListView(generics.ListAPIView):
+#     queryset = Tag.objects.all()
+#     serializer_class = TagSerializer
 
 
 class ShowcaseListView(generics.ListAPIView):
@@ -30,84 +45,16 @@ class PostDetailView(generics.RetrieveAPIView):
     serializer_class = PostSerializer
 
 
-# class TaskListView(generics.ListCreateAPIView):
-#     queryset = Task.objects.all()
-#     serializer_class = TaskSerializer
-
-
-# class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Task.objects.all()
-#     serializer_class = TaskSerializer
-
-# class TaskListView(
-#         mixins.ListModelMixin,
-#         mixins.CreateModelMixin,
-#         generics.GenericAPIView):
-#     """ List all tasks, create new tasks """
-
-#     queryset = Task.objects.all()
-#     serializer_class = TaskSerializer
-
-#     def get(self, request, *args, **kwargs):
-#         return self.list(request, *args, **kwargs)
-
-#     def post(self, request, *args, **kwargs):
-#         return self.create(request, *args, **kwargs)
-
-
-# class TaskDetailView(
-#         mixins.RetrieveModelMixin,
-#         mixins.UpdateModelMixin,
-#         mixins.DestroyModelMixin,
-#         generics.GenericAPIView):
-#     """ List, update and delete a task """
-
-#     queryset = Task.objects.all()
-#     serializer_class = TaskSerializer
-
-#     def get(self, request, *args, **kwargs):
-#         return self.retrieve(request, *args, **kwargs)
-
-#     def put(self, request, *args, **kwargs):
-#         return self.update(request, *args, **kwargs)
-
-#     def delete(self, request, *args, **kwargs):
-#         return self.destroy(request, *args, **kwargs)
-
-
 @api_view(['GET'])
 def api_overview(request):
     api_urls = {
-        'List': '/tast-list',
-        'Detail View': '/task-detail/<str:pk>/',
-        'Create': '/task-create/',
-        'Update': '/task-update/<str:pk>/',
-        'Delete': '/task-delete/<str:pk>/',
+        'Showcases': '/showcases/',
+        'Showcase Detail': '/showcases/<int:pk>/',
+        'Showcase labels': '/showcases/labels/',
+        'Showcases under one label': '/showcases/labels/<int:pk>',
+        'Posts': '/posts/',
+        'Post Detail': '/posts/<int:pk>/',
+        'Post tags': '/posts/tags/',
+        'Posts under one tag': '/posts/tags/<int:pk>',
     }
     return Response(api_urls)
-
-
-# class TaskListView(APIView):
-#     """ List all tasks """
-
-#     def get(self, request, format=None):
-#         tasks = Task.objects.all()
-#         serializer = TaskSerializer(tasks, many=True)
-#         return Response(serializer.data)
-
-
-# class TaskDetailView(APIView):
-#     """ List a single task, identified by its pk """
-
-#     def get(self, request, pk, format=None):
-#         task = get_object_or_404(Task, pk=pk)
-#         serializer = TaskSerializer(task)
-#         return Response(serializer.data)
-
-
-# @api_view(['GET'])
-# def task_list(request):
-#     """ List all tasks """
-#     tasks = Task.objects.all()
-#     serializer = TaskSerializer(tasks, many=True)
-#     return Response(serializer.data)
