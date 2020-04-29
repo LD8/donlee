@@ -10,7 +10,6 @@ urlpatterns = [
     path('showcases/labels/', views.LabelListView.as_view()),
     path('showcases/labels/<int:label_pk>/', views.ShowcaseLabelQ.as_view()),
 
-
     path('posts/', views.PostListView.as_view()),
     path('posts/<int:pk>/', views.PostDetailView.as_view()),
     # will finish post tag searching later
