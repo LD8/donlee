@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { NotFound } from "./NotFound";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
 
@@ -28,6 +29,7 @@ export default function Main({ params }) {
                 )}
               />
             ))}
+            <Route path="*" component={NotFound} />
           </Switch>
         </animated.div>
       ))}

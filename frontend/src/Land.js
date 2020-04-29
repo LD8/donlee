@@ -21,7 +21,7 @@ export default function Land() {
   const isLanding = pathname === "/";
   return (
     <Switch>
-      <Route exact path="/cv" component={CVPage} />
+      <Route path="/cv" component={CVPage} />
       <Route path="/">
         <SContainer id="SContainer">
           <SBGDimmer darken={isLanding} id="SBGDimmer" />
