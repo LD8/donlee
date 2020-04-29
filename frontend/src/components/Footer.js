@@ -8,19 +8,19 @@ import CV from "../assets/svg/CV.svg";
 const icons = [
   {
     name: "Email",
-    source: At,
+    imageSource: At,
     altText: "Email address: Mail to Don Lee at don_lee@me.com",
     href: "mailto: don_lee@me.com",
   },
   {
     name: "CV",
-    source: CV,
+    imageSource: CV,
     altText: "CV/Resumé of Don Lee, click to view",
-    href: "mailto: don_lee@me.com",
+    href: "",
   },
   {
     name: "Github",
-    source: Github,
+    imageSource: Github,
     altText: "Github account of Don Lee",
     href: "https://github.com/LD8",
   },
@@ -33,7 +33,7 @@ export const Footer = () => {
         <Icon
           key={index}
           name={i.name}
-          imageSource={i.source}
+          imageSource={i.imageSource}
           altText={i.altText}
           index={index}
           href={i.href}

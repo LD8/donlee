@@ -3,12 +3,11 @@ import styled from "styled-components";
 import Nav from "./components/Nav";
 import Main from "./components/Main";
 import Quote from "./components/Quote";
-import { useLocation } from "react-router-dom";
 import { AboutPage } from "./components/AboutPage/AboutPage";
 import { PortfolioPage } from "./components/PortfolioPage/PortfolioPage";
 import { BlogPage } from "./components/BlogPage/BlogPage";
 import { CVPage } from "./components/CVPage/CVPage";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import BG from "./assets/img/bg.jpg";
 
 const params = [
@@ -45,7 +44,7 @@ const SContainer = styled.div`
   overflow: hidden;
 
   background-color: var(--bg-color);
-  background-image: url(${BG});
+  background-image: url(${BG}); /* not shown properly */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

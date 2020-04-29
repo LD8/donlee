@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Skill } from "./Skill";
 import { Footer } from "../Footer";
 import { AnimateImage } from "./AnimateImage";
-
 import Portrait from "../../assets/img/portrait.png";
 
 const skills = [
@@ -24,7 +23,8 @@ export const AboutPage = () => {
     <>
       <SMyInfo id="SMyInfo">
         <section className="info-section">
-          <AnimateImage imageSource={Portrait} altText={"my portrait"} />
+          <AnimateImage imageSource={Portrait} altText={"my portrait"} />{" "}
+          {/* not shown properly */}
           <div className="my-info">
             <h2>Don Lee</h2>
             <h4>Full-stack Developer</h4>
