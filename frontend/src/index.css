@@ -1,5 +1,5 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap"); */
-@import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Redressed&display=swap");
 
 * {
   margin: 0;
@@ -22,7 +22,7 @@ code {
 
 :root {
   /* --nav-font: "Lobster", cursive; */
-  --nav-font: 'Redressed', cursive;
+  --nav-font: "Redressed", cursive;
   --bg-color: rgb(0, 65, 0);
   --text-shadow-color: rgb(31, 27, 0);
   --bg-shadow-color: rgba(0, 0, 0, 0.7);
@@ -30,8 +30,16 @@ code {
   --link-text-color: white;
   --fadedgreen: rgb(120, 140, 120);
   --whitegreen: rgb(200, 230, 200);
-  --titlegrey: rgb(130, 140, 130); /* for titles visited on blog list view && tags background*/
-  --title: rgb(200, 200, 200); 
+  --titlegrey: rgb(
+    130,
+    140,
+    130
+  ); /* for titles visited on blog list view && tags background*/
+  --title: rgb(200, 200, 200);
   z-index: -10;
   background-color: rgb(150, 150, 150);
+}
+
+#SContainer {
+  background-image: url("./assets/img/bg.jpg");
 }

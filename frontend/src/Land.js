@@ -8,6 +8,7 @@ import { PortfolioPage } from "./components/PortfolioPage/PortfolioPage";
 import { BlogPage } from "./components/BlogPage/BlogPage";
 import { CVPage } from "./components/CVPage/CVPage";
 import { Route, Switch, useLocation } from "react-router-dom";
+// import BG from "./assets/img/bg.jpg";
 
 const params = [
   ["about", <AboutPage />],
@@ -43,7 +44,7 @@ const SContainer = styled.div`
   overflow: hidden;
 
   background-color: var(--bg-color);
-  background-image: url("./assets/img/bg.jpg"); /* not shown properly */
+  /* background-image: url(${BG}); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

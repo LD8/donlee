@@ -27,6 +27,8 @@ else:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     # SECURE_HSTS_SECONDS = 600 #https://docs.djangoproject.com/en/3.0/ref/middleware/#http-strict-transport-security
+
+    # The absolute path to the directory where collectstatic will collect static files for deployment.
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
