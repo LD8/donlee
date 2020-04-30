@@ -8,14 +8,12 @@ import { PortfolioPage } from "./components/PortfolioPage/PortfolioPage";
 import { BlogPage } from "./components/BlogPage/BlogPage";
 import { CVPage } from "./components/CVPage/CVPage";
 import { Route, Switch, useLocation } from "react-router-dom";
-import BG from "./assets/img/bg.jpg";
 
 const params = [
   ["about", <AboutPage />],
   ["portfolio", <PortfolioPage />],
   ["blog", <BlogPage />],
 ];
-const bg = [{ BGSource: BG }];
 
 export default function Land() {
   const { pathname } = useLocation();
@@ -24,10 +22,7 @@ export default function Land() {
     <Switch>
       <Route path="/cv" component={CVPage} />
       <Route path="/">
-        <SContainer
-          id="SContainer"
-          style={{ backgroundImage: `url(${bg.BGSource})` }}
-        >
+        <SContainer id="SContainer">
           <SBGDimmer darken={isLanding} id="SBGDimmer" />
           <Nav params={params} />
           <Main params={params} />
@@ -48,6 +43,7 @@ const SContainer = styled.div`
   overflow: hidden;
 
   background-color: var(--bg-color);
+  background-image: url("./assets/img/bg.jpg"); /* not shown properly */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
