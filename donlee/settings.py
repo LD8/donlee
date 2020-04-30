@@ -149,7 +149,7 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 REST_FRAMEWORK = {
-    NOTE: it is a good idea to disable the browseable API in production with this configuration:
+    # NOTE: it is a good idea to disable the browseable API in production with this configuration:
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     )
