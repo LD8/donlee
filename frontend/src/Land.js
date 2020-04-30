@@ -44,7 +44,7 @@ const SContainer = styled.div`
   overflow: hidden;
 
   background-color: var(--bg-color);
-
+  background-image: url("https://donlee.online/static/frontend/cd741713289c4e359cec6dd80a1c681e.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

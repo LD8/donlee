@@ -39,7 +39,3 @@ code {
   z-index: -10;
   background-color: rgb(150, 150, 150);
 }
-
-#SContainer {
-  background-image: url("./assets/img/bg.jpg");
-}
