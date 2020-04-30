@@ -1,5 +1,5 @@
-node_modules
-media
+node_modules/
+media/
 .backup
 .vscode
 .pip/
