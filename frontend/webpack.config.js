@@ -18,7 +18,6 @@ module.exports = {
             loader: "url-loader",
             options: {
               limit: 8192,
-              publicPath: "/static/",
             },
           },
         ],

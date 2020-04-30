@@ -23,7 +23,7 @@ export default function Land() {
     <Switch>
       <Route path="/cv" component={CVPage} />
       <Route path="/">
-        <SContainer id="SContainer">
+        <SContainer id="SContainer" style={{ backgroundImage: `url(${BG})` }}>
           <SBGDimmer darken={isLanding} id="SBGDimmer" />
           <Nav params={params} />
           <Main params={params} />
@@ -44,7 +44,6 @@ const SContainer = styled.div`
   overflow: hidden;
 
   background-color: var(--bg-color);
-  background-image: url(${BG}); /* not shown properly */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
