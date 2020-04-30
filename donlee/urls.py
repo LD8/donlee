@@ -4,8 +4,8 @@ from . import settings
 from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
 
 urlpatterns = [
-    path('api/', include('api.urls')),
     path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
     # frontend urls has to go at the end
     path('', include('frontend.urls')),
 ]
