@@ -1,10 +1,11 @@
+migrations/
 node_modules/
 media/
 .backup
 .vscode
 .pip/
 
-migrations/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
