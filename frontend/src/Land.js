@@ -15,6 +15,7 @@ const params = [
   ["portfolio", <PortfolioPage />],
   ["blog", <BlogPage />],
 ];
+const bg = [{ BGSource: BG }];
 
 export default function Land() {
   const { pathname } = useLocation();
@@ -23,7 +24,10 @@ export default function Land() {
     <Switch>
       <Route path="/cv" component={CVPage} />
       <Route path="/">
-        <SContainer id="SContainer" style={{ backgroundImage: `url(${BG})` }}>
+        <SContainer
+          id="SContainer"
+          style={{ backgroundImage: `url(${bg.BGSource})` }}
+        >
           <SBGDimmer darken={isLanding} id="SBGDimmer" />
           <Nav params={params} />
           <Main params={params} />
