@@ -136,7 +136,7 @@ LOGIN_URL = 'users:login'
 
 
 # Enable CORS(Cross Origin Resrouce Sharing) for all domains, allow all domains to access api
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
 
 # Or you can whitelist them
 CORS_ORIGIN_WHITELIST = [
@@ -149,10 +149,10 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 REST_FRAMEWORK = {
-    # NOTE: it is a good idea to disable the browseable API in production with this configuration:
-    # 'DEFAULT_RENDERER_CLASSES': (
-    #     'rest_framework.renderers.JSONRenderer',
-    # )
+    NOTE: it is a good idea to disable the browseable API in production with this configuration:
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
 }
 
-DEBUG = True
+# DEBUG = True
