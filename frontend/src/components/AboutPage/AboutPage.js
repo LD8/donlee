@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Skill } from "./Skill";
 import { Footer } from "../Footer";
 import { AnimateImage } from "./AnimateImage";
-import Portrait from "../../assets/img/portrait.png";
 
 const skills = [
   { skill: "HTML", percentage: 90 },
@@ -23,7 +22,10 @@ export const AboutPage = () => {
     <>
       <SMyInfo id="SMyInfo">
         <section className="info-section">
-          <AnimateImage imageSource={Portrait} altText={"my portrait"} />{" "}
+          <AnimateImage
+            imageSource={"https://donlee.online/static/img/portrait.png"}
+            altText={"my portrait"}
+          />{" "}
           {/* not shown properly */}
           <div className="my-info">
             <h2>Don Lee</h2>

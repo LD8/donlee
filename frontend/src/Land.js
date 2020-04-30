@@ -7,8 +7,7 @@ import { AboutPage } from "./components/AboutPage/AboutPage";
 import { PortfolioPage } from "./components/PortfolioPage/PortfolioPage";
 import { BlogPage } from "./components/BlogPage/BlogPage";
 import { CVPage } from "./components/CVPage/CVPage";
-import { Route, Switch, useLocation } from "react-router-dom";
-// import BG from "./assets/img/bg.jpg";
+import { Route, Switch, useLocation, useRouteMatch } from "react-router-dom";
 
 const params = [
   ["about", <AboutPage />],
@@ -19,6 +18,8 @@ const params = [
 export default function Land() {
   const { pathname } = useLocation();
   const isLanding = pathname === "/";
+  const { url } = useRouteMatch();
+  console.log(url);
   return (
     <Switch>
       <Route path="/cv" component={CVPage} />
@@ -44,7 +45,7 @@ const SContainer = styled.div`
   overflow: hidden;
 
   background-color: var(--bg-color);
-  background-image: url("https://donlee.online/static/frontend/cd741713289c4e359cec6dd80a1c681e.jpg");
+  background-image: url("https://donlee.online/static/img/bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

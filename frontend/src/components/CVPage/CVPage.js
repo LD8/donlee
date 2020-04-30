@@ -1,7 +1,6 @@
 /* eslint-disable no-multi-str */
 import React from "react";
 import styled from "styled-components";
-import Portrait from "../../assets/img/CV-portrait.jpeg";
 import { Skill } from "./Skill";
 import { Experience } from "./Experience";
 import { Education } from "./Education";
@@ -118,7 +117,10 @@ export const CVPage = () => {
     <SPaper id="SPaper">
       <section className="title">
         <div className="portrait-container">
-          <img src={Portrait} alt="Don Lee's portrait" />
+          <img
+            src={"https://donlee.online/static/img/CV-portrait.jpeg"}
+            alt="Don Lee's portrait"
+          />
         </div>
         <div className="info">
           <div className="general-info">
