@@ -7,7 +7,7 @@ import { AboutPage } from "./components/AboutPage/AboutPage";
 import { PortfolioPage } from "./components/PortfolioPage/PortfolioPage";
 import { BlogPage } from "./components/BlogPage/BlogPage";
 import { CVPage } from "./components/CVPage/CVPage";
-import { Route, Switch, useLocation, useRouteMatch } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 
 const params = [
   ["about", <AboutPage />],
@@ -18,8 +18,6 @@ const params = [
 export default function Land() {
   const { pathname } = useLocation();
   const isLanding = pathname === "/";
-  const { url } = useRouteMatch();
-  console.log(url);
   return (
     <Switch>
       <Route path="/cv" component={CVPage} />
