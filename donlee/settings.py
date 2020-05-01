@@ -19,7 +19,7 @@ else:
 
     ALLOWED_HOSTS = [
         'donlee.online',
-        '13.124.94.92',
+        '13.125.96.136',
         '5.63.152.4',
         'localhost',
     ]
