@@ -8,12 +8,12 @@ admin.site.site_title = "Don Lee's Admin"
 
 @admin.register(Tag)
 class BrandAdmin(admin.ModelAdmin):
-    list_display = ('name', 'post_numbers_with_this_tag')
+    list_display = ('name', 'order', 'post_numbers_with_this_tag')
 
 
 @admin.register(Label)
 class BrandAdmin(admin.ModelAdmin):
-    list_display = ('name', 'showcase_numbers_with_this_label')
+    list_display = ('name', 'order', 'showcase_numbers_with_this_label')
 
 
 @admin.register(Tech)
@@ -23,10 +23,10 @@ class BrandAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'get_tags', 'uploaded_date')
+    list_display = ('title', 'order', 'get_tags', 'uploaded_date')
 
 
 @admin.register(Showcase)
 class ShowcaseAdmin(admin.ModelAdmin):
-    list_display = ('name', 'get_labels', 'get_techs', 'link_online',
+    list_display = ('name', 'order', 'get_labels', 'get_techs', 'link_online',
                     'link_github', 'link_codesandbox')
