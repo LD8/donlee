@@ -4,11 +4,18 @@ from django.db import models
 class Label(models.Model):
     name = models.CharField(
         max_length=50, verbose_name='Label of framework, library, language etc.')
+    order = models.IntegerField(choices=[
+        (1, 'Has to be at the front'),
+        (2, 'Main categories'),
+        (3, 'Front-end'),
+        (4, 'Back-end'),
+        (5, 'Has to be at the back'),
+    ], default=1)
 
     class Meta():
         verbose_name = 'Label'
         verbose_name_plural = 'Labels'
-        ordering = ['name']
+        ordering = ['order', 'name']
 
     def __str__(self):
         return self.name
@@ -58,10 +65,19 @@ class Showcase(models.Model):
     img_third = models.ImageField(
         upload_to='showcase_images', null=True, blank=True, verbose_name='Image (size: 600px x 400px) to show in detail page (optional)')
 
+    order = models.IntegerField(choices=[
+        (1, 'NEW'),
+        (2, 'Super Fine'),
+        (3, 'Fine'),
+        (4, 'Okay'),
+        (5, 'Beginner'),
+        (6, 'Doodle'),
+    ], default=1)
+
     class Meta():
         verbose_name = 'Showcase'
         verbose_name_plural = 'Showcases'
-        ordering = ['name']
+        ordering = ['order', 'name']
 
     def __str__(self):
         return self.name
@@ -69,18 +85,27 @@ class Showcase(models.Model):
     @property
     def get_labels(self):
         return ", ".join([l.name for l in self.labels.all()])
+
     @property
     def get_techs(self):
         return ", ".join([t.name for t in self.techs.all()])
 
+
 class Tag(models.Model):
     name = models.CharField(
         max_length=50, verbose_name='Keywords of the post')
+    order = models.IntegerField(choices=[
+        (1, 'Absolute front'),
+        (2, 'Front'),
+        (3, 'Middle'),
+        (4, 'Back'),
+        (5, 'Absolute back'),
+    ], default=3)
 
     class Meta():
         verbose_name = 'Tag'
         verbose_name_plural = 'Tags'
-        ordering = ['name']
+        ordering = ['order', 'name']
 
     def __str__(self):
         return self.name
@@ -96,11 +121,18 @@ class Post(models.Model):
         Tag, blank=True)
     content = models.TextField()
     uploaded_date = models.DateTimeField(null=True, blank=True)
+    order = models.IntegerField(choices=[
+        (1, 'Absolute front'),
+        (2, 'Front'),
+        (3, 'Middle'),
+        (4, 'Back'),
+        (5, 'Absolute back'),
+    ], default=3)
 
     class Meta():
         verbose_name = 'Post'
         verbose_name_plural = 'Posts'
-        ordering = ['-uploaded_date', 'title']
+        ordering = ['order', '-uploaded_date', 'title']
 
     def __str__(self):
         return self.title
