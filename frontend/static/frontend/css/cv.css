@@ -4,9 +4,7 @@
   box-sizing: border-box; }
 
 body {
-  background-color: silver; }
-
-main {
+  background-color: silver;
   --theme-color: rgb(0, 90, 190);
   --whole-width: 842px;
   --aside-width: 170px;
@@ -15,7 +13,44 @@ main {
   --fontL: 25px;
   --fontM: 16px;
   --fontS: 13px;
-  --paper-padding: 80px;
+  --paper-padding: 80px; }
+  @media only screen and (max-width: 800px) {
+    body {
+      --whole-width: 100%;
+      --aside-width: 100%;
+      --main-width: 100%; } }
+
+/* ------------------------- Language Switch ------- */
+.lang-switch-btn {
+  position: fixed;
+  right: 0;
+  top: 40px;
+  z-index: 10; }
+  .lang-switch-btn a {
+    padding: 8px 5px;
+    text-decoration: none;
+    font-size: 13px;
+    color: var(--theme-color);
+    border-radius: 5px 0 0 5px;
+    border: 1px solid var(--theme-color);
+    background-color: transparent; }
+    .lang-switch-btn a:hover {
+      color: white;
+      border: none;
+      background-color: var(--theme-color); }
+  @media only screen and (min-width: 800px) {
+    .lang-switch-btn {
+      position: sticky;
+      align-self: flex-end;
+      margin-right: -81px;
+      margin-top: -25px; }
+      .lang-switch-btn a {
+        padding: 8px 10px; } }
+  @media print {
+    .lang-switch-btn {
+      display: none; } }
+
+main {
   position: relative;
   width: 100%;
   height: 100%;
@@ -38,11 +73,6 @@ main {
   /* ------------------------- SEE sections ------- */ }
   @media only screen and (max-width: 800px) {
     main {
-      --whole-width: 100%;
-      --aside-width: 100%;
-      --main-width: 100%; } }
-  @media only screen and (max-width: 800px) {
-    main {
       margin: 0;
       padding: 40px; } }
   main ul {
@@ -52,7 +82,8 @@ main {
   main .company-name {
     font-weight: 600;
     background-color: whitesmoke;
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    padding-left: 5px; }
   main .company-name {
     font-weight: 400;
     padding-right: 5px; }
@@ -79,6 +110,7 @@ main {
         padding-right: 20px; }
         main .title .info .general-info h1 {
           text-transform: uppercase;
+          padding-top: 5px;
           font-size: var(--fontXL);
           font-weight: 600;
           letter-spacing: 0.05em;
@@ -91,7 +123,7 @@ main {
           font-size: var(--fontM); }
       main .title .info .contact-info {
         width: 130px;
-        height: 80px;
+        height: 90px;
         padding-left: 20px;
         border-left: 2px solid #f0f0f0; }
         main .title .info .contact-info a {
@@ -99,7 +131,7 @@ main {
           text-decoration: none;
           display: block;
           font-size: var(--fontS); }
-          main .title .info .contact-info a :hover {
+          main .title .info .contact-info a:hover {
             text-decoration: underline; }
   @media only screen and (max-width: 800px) {
     main .title {
@@ -182,10 +214,10 @@ main {
           text-decoration: none;
           font-weight: 300;
           color: var(--theme-color); }
-          main .skills .sub-container .aside a :hover,
-          main .experience .sub-container .aside a :hover,
-          main .education .sub-container .aside a :hover,
-          main .other .sub-container .aside a :hover {
+          main .skills .sub-container .aside a:hover,
+          main .experience .sub-container .aside a:hover,
+          main .education .sub-container .aside a:hover,
+          main .other .sub-container .aside a:hover {
             text-decoration: underline; }
       main .skills .sub-container .details,
       main .experience .sub-container .details,

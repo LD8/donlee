@@ -1,45 +1,40 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-160807655-1"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
 
-      gtag("config", "UA-160807655-1");
-    </script>
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160807655-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-    <!-- General meta data -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta
-      name="description"
-      content="Don Lee's website page, displaying his work, his blog, his passion. He is passionate in developing software that improves our lives both physically and mentally"
-    />
-    <meta name="”robots”" content="”index”" />
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-    {% block openGraph %}{% endblock openGraph %}
-    <!-- open graph tags for social media -->
+    gtag("config", "UA-160807655-1");
+  </script>
 
-    {% block stylesheet %}{% endblock stylesheet %}
-    <!-- title icon -->
-    <link
-      rel="icon"
-      type="image/gif/png"
-      href="{% static 'frontend/favicon.ico' %}"
-    />
-    {% block title %} {% endblock title %}
-  </head>
-  <body>
-    {% block content %}{% endblock content %}
-  </body>
+  <!-- General meta data -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description"
+    content="Don Lee's website page, displaying his work, his blog, his passion. He is passionate in developing software that improves our lives both physically and mentally" />
+  <meta name="”robots”" content="”index”" />
+
+  {% block openGraph %}{% endblock openGraph %}
+  <!-- open graph tags for social media -->
+
+  {% block stylesheet %}{% endblock stylesheet %}
+  <!-- title icon -->
+  <link rel="icon" type="image/gif/png" href="{% static 'frontend/favicon.ico' %}" />
+  {% block title %} {% endblock title %}
+</head>
+
+<body>
+  {% block content %}{% endblock content %}
+</body>
+
 </html>

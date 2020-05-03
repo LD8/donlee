@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block ogImage %}
-<meta property="og:site_name" content="Don Lee's CV" />
-<meta property="og:title" content="Don Lee's CV" />
-<meta property="og:description" content="Don Lee's CV, Resumé" />
+<meta property="og:site_name" content="李沛文的简历" />
+<meta property="og:title" content="李沛文的简历" />
+<meta property="og:description" content="李沛文的简历" />
 <meta property="og:image" itemprop="image" content="https://donlee.online/static/frontend/img/cv-portrait-sm.jpg" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="300" />
@@ -20,22 +20,22 @@
 {% endblock stylesheet %}
 
 {% block title %}
-<title>Don Lee's CV</title>
+<title>李沛文的中文简历</title>
 {% endblock title %}
 
 {% block content %}
-<main id="SPaper">
-  <div class="lang-switch-btn"><a href="{% url 'frontend:cv-zh' %}">中 / EN</a></div>
+<main id="SPaper" style="line-height: 1.8em;">
+  <div class="lang-switch-btn"><a href="{% url 'frontend:cv-en' %}">EN / 中</a></div>
   <section class="title">
     <div class="portrait-container">
       <img src="{% static 'frontend/img/cv-portrait-sm.jpg' %}" alt="Don Lee's portrait" />
     </div>
     <div class="info">
       <div class="general-info">
-        <h1>Don Lee</h1>
-        <h2>Full-stack Software Developer</h2>
+        <h1>李沛文</h1>
+        <h2 style="font-size:medium; margin:15px 0;">全栈开发</h2>
         <p>
-          Passionate in developing software that brings happiness and light into our lives
+          对开发可以给人们带来快乐和给生活带来光彩的软件报以热忱
         </p>
       </div>
       <div class="contact-info">
@@ -54,17 +54,16 @@
 
   <section class="skills">
     <div class="sub-title">
-      <h3>Skills</h3>
+      <h3>技能</h3>
     </div>
     <div class="sub-container">
       <div class="aside"></div>
       <div class="details">
         <ul>
-          <li>Front-end: JavaScript ES6, React (with Hooks), Webpack, HTML5, CSS3</li>
-          <li>Back-end: Python, Django, Flask, Postgres</li>
-          <li>Data Visualisation: Python, Plotly, Matplotlib</li>
-          <li>UI/UX: having a master degree in Art and Science, I am confident in designing as well as making/coding the
-            perfect product with great user experience</li>
+          <li>前端：JavaScript ES6, React (with Hooks), Webpack, HTML5, CSS3</li>
+          <li>后端：Python, Django, Flask, Postgres</li>
+          <li>数据可视化：Python, Plotly, Matplotlib</li>
+          <li>UI/UX：经过在英国的硕士学习，对艺术与科学交叉项目有了清晰的认识和具有一定深度的理解，对设计和编写高质量的、高交互性的项目很有信心</li>
         </ul>
       </div>
     </div>
@@ -72,24 +71,24 @@
 
   <section class="experience">
     <div class="sub-title">
-      <h3>Experience</h3>
+      <h3>工作经验</h3>
     </div>
 
     <div class="sub-container">
       <div class="aside">
-        <p class="company-name">Freelance</p>
+        <p class="company-name">自由职业，上海</p>
         <p class="year">June 2019 - Now</p>
         <a target="_blank" rel="noopener noreferrer" href="http://www.donlee.online">
           donlee.online
         </a>
       </div>
       <div class="details">
-        <h4>User Experience and Web app Designer</h4>
+        <h4>用户体验和网页app设计</h4>
         <!-- <p>{description && description}</p> -->
         <ul>
-          <li>Turning hobby into a career, helping entrepreneurs building interactive web apps</li>
-          <li>Design data structure based on their business models</li>
-          <li>Develop web apps independently, mainly coding in Python, HTML, JavaScript, CSS</li>
+          <li>尝试将兴趣转化为职业，帮助身边的创业者建设网页app</li>
+          <li>根据他们的商业模式定制合理的网页app数据库结构</li>
+          <li>独立编写代码，主要应用JavaScript (React.js)和Python的Django Web框架</li>
         </ul>
         <!-- <p>{ending && ending}</p> -->
       </div>
@@ -98,80 +97,69 @@
 
     <div class="sub-container">
       <div class="aside">
-        <p class="company-name">ACG International</p>
+        <p class="company-name">环球艺盟，上海</p>
         <p class="year">June 2017 - June 2019</p>
         <a target="_blank" rel="noopener noreferrer" href="www.acg-art.com">
           acg-art.com
         </a>
       </div>
       <div class="details">
-        <h4>Instructor — Art and Design</h4>
+        <h4>艺术与设计导师</h4>
         <!-- <p>{description && description}</p> -->
         <ul>
-          <li>Teach applied arts, primarily interior design and analogue photography process to students for portfolio
-            building and personal development in related subjects</li>
-          <li>Develop curriculum and prepare outlines for workshops</li>
-          <li>Provide individualised tutorial or remedial instruction</li>
-          <li>Supervise independent projects and hands-on training</li>
-          <li>Advise students on program curricula and career decisions</li>
+          <li>教授15至24岁年龄段的艺术学生室内设计初级以及传统摄影技法</li>
+          <li>帮助学生建立自己的独立作品集</li>
+          <li>帮助学生申请国际艺术院校</li>
+          <li>设计新的课程大纲、测试及应用在教学中</li>
+          <li>提供根据学生个体情况的个别指导，鼓励学生独立动手完成项目</li>
+          <li>提供必要的职业规划建议和指导</li>
         </ul>
-        <p>In these two years as a teacher, 32 amongst 34 of my students have successfully secured offers from
-          prestigious art institutions across UK, France, US, Canada, Australia, students majored in Interior design,
-          photography and landscape design both on BA level (40%) and MA level (60%). While helping my lovely students
-          embarking on their great journey, for content growing interests, I have been scrutinising web design languages
-          since 2016</p>
+        <p>在这两年的教学生涯中，经手34位学生，有32位申请上重点艺术院校，申请科目包括室内设计、摄影、景观设计，申请国家包括英国、法国、澳大利亚、美国、加拿大等，英联邦居多，其中申请本科的学生占40%，申请硕士的学生占60%；帮助学生申请到理想的院校、获得巨大的成就感的同时，2016年出于浓厚的兴趣，开始自学网页方向的编程</p>
       </div>
     </div>
     </div>
 
     <div class="sub-container">
       <div class="aside">
-        <p class="company-name">British Library</p>
+        <p class="company-name">大英图书馆，伦敦</p>
         <p class="year">May - November 2015</p>
         <a target="_blank" rel="noopener noreferrer" href="https://www.bl.uk/">
           bl.uk
         </a>
       </div>
       <div class="details">
-        <h4>Volunteer Interpreter</h4>
-        <p>Interpreting and translating Chinese minority manuscripts mainly scores. Only after being interpreted in
-          Pinyin can they be further studied.</p>
-        <!-- <ul>{bullets && ...}</ul> -->
-        <p>Nearly 100 scripts were translated in half year. I am thrilled to have helped the study and have participated
-          in the dissemination of Chinese minority culture in an international context</p>
+        <h4>中国少数民族文献手稿翻译志愿者</h4>
+        <p>翻译苗族、土家族等中国少数民族的曲谱手稿，大部分手稿经过注音可后续被专业人员进行理解和分析。在这半年期间，翻译将近一百页文献，希望能通过此举促进中国少数民族文化在国际上的传播和研究</p>
       </div>
     </div>
     </div>
 
     <div class="sub-container">
       <div class="aside">
-        <p class="company-name">M Moser Associates</p>
+        <p class="company-name">穆氏建筑，上海</p>
         <p class="year">May 2011 - May 2013</p>
         <a target="_blank" rel="noopener noreferrer" href="https://www.mmoser.com">
           mmoser.com
         </a>
       </div>
       <div class="details">
-        <h4>Project Coordinator and Interior Designer</h4>
-        <p>From a project coordinator to a designer who leads a small team, my duty had grown drastically, including:
-        </p>
+        <h4>室内设计师，项目管理和协调</h4>
+        <p>从项目协调员成长为设计师，职责也在不断变化，包括</p>
         <ul>
-          <li>drawing draft plans, construction plans and detail plans</li>
-          <li>putting together project presentations</li>
-          <li>conveying design ideas to clients in presentations</li>
-          <li>on site construction management</li>
+          <li>绘制项目草图和施工图</li>
+          <li>制作招投标文件，设计汇报演示文稿PPT</li>
+          <li>向客户传达设计核心理念，后续与客户沟通设计进展</li>
+          <li>与现场工程师协调，确保设计与质量的一致性</li>
+          <li>与现场项目监理协调，确保项目如期完工</li>
         </ul>
-        <p>In these two years, I participated in 1 large project over 2000 sqm, 2 medium projects over 1000 sqm and 4
-          smaller projects just under 500 sqm, all of which were successfully delivered on schedule. During this time, I
-          tasted the fruit of seamless team work, gained understanding of project management, realising that much
-          knowledge to be learnt, followed by further study in the UK</p>
+        <p>在设计师的岗位上工作的两年中，完成1个面积超过2000平米的大型项目，2个面积在1000平米左右的中型项目，经手4个面积在500平米以下的小型项目，均顺利如期完成，历练了对社会职场的理解，对工程项目的管理形成了一定的理解，同时意识到自己学识的不足，随即出国深造</p>
       </div>
     </div>
   </section>
 
   <section class="education">
     <div class="sub-title">
-      <h3>Education</h3>
+      <h3>教育背景</h3>
     </div>
 
     <div class="sub-container">
@@ -185,9 +173,9 @@
         </a>
       </div>
       <div class="details">
-        <h4>Frontend Programmer Certificate, UI Design Practice</h4>
+        <h4>前端开发资格证，UI设计</h4>
         <p>FreeCodeCamp, Interaction Design Foundation</p>
-        <h6>Online and self-taught</h6>
+        <h6>网络资源</h6>
       </div>
     </div>
 
@@ -199,9 +187,9 @@
         </a>
       </div>
       <div class="details">
-        <h4>MA. in Art and Science</h4>
-        <p>Central Saint Martins, University of Arts London</p>
-        <h6>London, UK</h6>
+        <h4>MA. 硕士 艺术与科学</h4>
+        <p>中央圣马丁，伦敦艺术大学学院</p>
+        <h6>英国伦敦</h6>
       </div>
     </div>
 
@@ -213,9 +201,9 @@
         </a>
       </div>
       <div class="details">
-        <h4>Pre MA.</h4>
-        <p>Cambridge School of Visual and Performing Arts</p>
-        <h6>Cambridge, UK</h6>
+        <h4>Pre MA. 硕士预科</h4>
+        <p>剑桥艺术与表演学校</p>
+        <h6>英国剑桥</h6>
       </div>
     </div>
 
@@ -227,9 +215,9 @@
         </a>
       </div>
       <div class="details">
-        <h4>Certificate - Interior Design</h4>
-        <p>Shanghai Normal university</p>
-        <h6>Shanghai, China</h6>
+        <h4>室内设计师资格证</h4>
+        <p>上海师范大学</p>
+        <h6>上海</h6>
       </div>
     </div>
 
@@ -241,16 +229,16 @@
         </a>
       </div>
       <div class="details">
-        <h4>BSc. Intelligent building and Technology</h4>
-        <p>Tongji University</p>
-        <h6>Shanghai, China</h6>
+        <h4>BSc. 学士 建筑设施智能技术</h4>
+        <p>同济大学同科学院</p>
+        <h6>上海</h6>
       </div>
     </div>
   </section>
 
   <section class="other">
     <div class="sub-title">
-      <h3>Other Perks</h3>
+      <h3>其他特长</h3>
     </div>
 
     <div class="sub-container">
@@ -258,10 +246,9 @@
       <div class="details">
         <ul>
           <li>
-            Speaks fluent English (IELTS 8.0), native Mandarin and basic
-            French
+            英语流利（雅思成绩8.0），法语初级
           </li>
-          <li>In his free time, liks to read, blog, swim, photography and travel</li>
+          <li>业余时间喜欢看书、写博客、游泳、摄影和旅行</li>
         </ul>
       </div>
     </div>

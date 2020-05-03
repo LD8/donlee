@@ -30,8 +30,8 @@ export const AboutPage = () => {
             <h2>Don Lee</h2>
             <h4>Full-stack Developer</h4>
             <p>
-              Passionate in developing software that improves our lives both
-              physically and mentally
+              Passionate in developing software that brings happiness and light
+              into our lives
             </p>
           </div>
         </section>
