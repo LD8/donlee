@@ -7,27 +7,45 @@ import slugifyText from "../Utils.js";
 import { Link } from "react-router-dom";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { APIBASE } from "../Const";
+import { Loading } from "../Loading";
 
 export const PortfolioSwitch = () => {
   const [showcases, setShowcases] = useState([]);
   const [labels, setLabels] = useState([]);
   const { path, url } = useRouteMatch();
 
-  //   console.log(activeLabelIndex)
+  const [placeHolder, setPlaceHolder] = useState(<Loading />);
+  const [casesLoaded, setCasesLoaded] = useState(false);
+  const [labelLoaded, setLabelLoaded] = useState(false);
+
   const fetchCases = () => {
     fetch(`${APIBASE}/showcases/`)
-      .then((response) => response.json())
+      .then((response) =>
+        response.status > 400
+          ? setPlaceHolder(
+              `Something went wrong with fetching showcases! Fetch Response ${response.status}`
+            )
+          : response.json()
+      )
       .then((data) => {
         setShowcases(data);
+        setCasesLoaded(true);
       })
       .catch((error) => console.log(error));
   };
 
   const fetchLabels = () => {
     fetch(`${APIBASE}/showcases/labels`)
-      .then((response) => response.json())
+      .then((response) =>
+        response.status > 400
+          ? setPlaceHolder(
+              `Something went wrong with fetching labels! Fetch Response ${response.status}`
+            )
+          : response.json()
+      )
       .then((data) => {
         setLabels(data);
+        setLabelLoaded(true);
       })
       .catch((error) => console.log(error));
   };
@@ -62,25 +80,29 @@ export const PortfolioSwitch = () => {
       </section>
 
       <section className="showcases">
-        <Switch>
-          <Route
-            exact
-            path={path}
-            render={() => (
-              <>
-                {showcases.map((showcase) => (
-                  <Showcase key={showcase.id} showcase={showcase} url={url} />
-                ))}
-              </>
-            )}
-          />
-          <Route
-            exact
-            path={`${path}/showcases/labels/:id/:slug`}
-            validate={(params) => Number.isInteger(params.id)}
-            render={() => <ShowcaseLabelQ url={url} />}
-          />
-        </Switch>
+        {casesLoaded && labelLoaded ? (
+          <Switch>
+            <Route
+              exact
+              path={path}
+              render={() => (
+                <>
+                  {showcases.map((showcase) => (
+                    <Showcase key={showcase.id} showcase={showcase} url={url} />
+                  ))}
+                </>
+              )}
+            />
+            <Route
+              exact
+              path={`${path}/showcases/labels/:id/:slug`}
+              validate={(params) => Number.isInteger(params.id)}
+              render={() => <ShowcaseLabelQ url={url} />}
+            />
+          </Switch>
+        ) : (
+          placeHolder
+        )}
       </section>
     </SMyPortfolio>
   );

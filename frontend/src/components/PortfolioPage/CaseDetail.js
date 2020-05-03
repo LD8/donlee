@@ -3,12 +3,14 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { APIBASE } from "../Const";
 import { ImgCarousel } from "./ImgCarousel";
+import { Loading } from "../Loading";
 
 export const CaseDetail = () => {
   const [showcase, setShowcase] = useState({});
-  const [loaded, setLoaded] = useState(false);
-  const [placeholder, setPlaceholder] = useState("Loading");
   const { id: caseID } = useParams();
+
+  const [placeholder, setPlaceholder] = useState(<Loading />);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     fetch(`${APIBASE}/showcases/${caseID}/`)
@@ -101,9 +103,7 @@ export const CaseDetail = () => {
       )}
     </SCaseDetail>
   ) : (
-    <SCaseDetail>
-      <div>{placeholder}</div>
-    </SCaseDetail>
+    placeholder
   );
 };
 
@@ -128,7 +128,7 @@ const SCaseDetail = styled.div`
       transition: filter 0.5s ease;
       will-change: filter;
       :hover {
-      box-shadow: 0 0 5px rgb(20, 15, 30);
+        box-shadow: 0 0 5px rgb(20, 15, 30);
         filter: brightness(60%);
       }
     }

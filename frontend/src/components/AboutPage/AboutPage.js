@@ -25,8 +25,7 @@ export const AboutPage = () => {
           <AnimateImage
             imageSource={"https://donlee.online/static/img/portrait.png"}
             altText={"my portrait"}
-          />{" "}
-          {/* not shown properly */}
+          />
           <div className="my-info">
             <h2>Don Lee</h2>
             <h4>Full-stack Developer</h4>

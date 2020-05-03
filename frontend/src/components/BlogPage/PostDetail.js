@@ -5,13 +5,15 @@ import { Tags } from "./Tags";
 import { APIBASE } from "../Const";
 import ReactMarkdown from "react-markdown";
 import CodeBlock from "./CodeBlock.js";
+import { Loading } from "../Loading";
 
 export const PostDetail = () => {
   const { id: paramId } = useParams();
   const [post, setPost] = useState({});
-  const [placeHolder, setPlaceHolder] = useState("Loading");
-  const [loaded, setLoaded] = useState(false);
   const { title, tags, content, uploaded_date } = post;
+
+  const [placeHolder, setPlaceHolder] = useState(<Loading />);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     fetch(`${APIBASE}/posts/${paramId}`)
@@ -42,7 +44,7 @@ export const PostDetail = () => {
       <p className="date">{uploaded_date && uploaded_date.slice(0, 10)}</p>
     </SPostDetail>
   ) : (
-    <SPostDetail>{placeHolder}</SPostDetail>
+    placeHolder
   );
 };
 

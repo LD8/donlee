@@ -5,23 +5,33 @@ import { PostLi } from "./PostLi";
 import { PostDetail } from "./PostDetail";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { APIBASE } from "../Const";
+import { Loading } from "../Loading";
 
 export const BlogPage = () => {
   const [posts, setPosts] = useState([]);
   const { path, url } = useRouteMatch();
 
-  const fetchData = () => {
-    fetch(`${APIBASE}/posts/`)
-      .then((response) => response.json())
+  const [placeHolder, setPlaceHolder] = useState(<Loading />);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    fetch(`${APIBASE}/posts`)
+      .then((response) =>
+        response.status > 400
+          ? setPlaceHolder(
+              `Something went wrong! Fetch Response ${response.status}`
+            )
+          : response.json()
+      )
       .then((data) => {
         setPosts(data);
-        // console.log(data);
+        setPlaceHolder(<Loading />);
+        setLoaded(true);
       })
       .catch((error) => console.log(error));
-  };
+  }, []);
 
-  useEffect(() => fetchData(), []);
-  return (
+  return loaded ? (
     <>
       <Switch>
         <Route
@@ -30,9 +40,7 @@ export const BlogPage = () => {
           render={() => (
             <SMyPosts id="SMyPosts">
               <section className="brief">
-                <h3>
-                  Posts about my life and work. 
-                </h3>
+                <h3>Posts about my life and work.</h3>
               </section>
 
               <section className="posts">
@@ -54,6 +62,8 @@ export const BlogPage = () => {
       </Switch>
       <Footer />
     </>
+  ) : (
+    placeHolder
   );
 };
 
@@ -74,7 +84,7 @@ const SMyPosts = styled.div`
       }
     }
   }
-  
+
   .posts {
     display: flex;
     justify-content: center;
