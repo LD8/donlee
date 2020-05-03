@@ -2,11 +2,24 @@
 {% load static %} 
 
 {% block ogImage %}
+<meta property="og:site_name" content="Don Lee's CV" />
+<meta property="og:title" content="Don Lee's CV" />
+<meta
+  property="og:description"
+  content="Don Lee's CV, Resumé"
+/>
 <meta
   property="og:image"
   itemprop="image"
   content="https://donlee.online/static/frontend/img/cv-portrait-sm.jpg"
 />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="300" />
+<meta property="og:image:height" content="300" />
+<meta property="og:type" content="website" />
+
+<meta property="og:updated_time" content="1588497367" />
+<meta property="og:url" content="https://donlee.online/cv" />
 {% endblock ogImage %}
 
 {% block stylesheet %}
