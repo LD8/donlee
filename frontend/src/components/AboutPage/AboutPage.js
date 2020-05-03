@@ -23,7 +23,7 @@ export const AboutPage = () => {
       <SMyInfo id="SMyInfo">
         <section className="info-section">
           <AnimateImage
-            imageSource={"https://donlee.online/static/img/portrait.png"}
+            imageSource={"https://donlee.online/static/img/portrait-sm.png"}
             altText={"my portrait"}
           />
           <div className="my-info">
