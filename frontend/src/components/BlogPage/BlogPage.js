@@ -15,20 +15,21 @@ export const BlogPage = () => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    fetch(`${APIBASE}/posts`)
-      .then((response) =>
-        response.status > 400
-          ? setPlaceHolder(
-              `Something went wrong! Fetch Response ${response.status}`
-            )
-          : response.json()
-      )
-      .then((data) => {
-        setPosts(data);
-        setPlaceHolder(<Loading />);
-        setLoaded(true);
-      })
-      .catch((error) => console.log(error));
+    posts !== [] &&
+      fetch(`${APIBASE}/posts`)
+        .then((response) =>
+          response.status > 400
+            ? setPlaceHolder(
+                `Something went wrong! Fetch Response ${response.status}`
+              )
+            : response.json()
+        )
+        .then((data) => {
+          setPosts(data);
+          setPlaceHolder(<Loading />);
+          setLoaded(true);
+        })
+        .catch((error) => console.log(error));
   }, []);
 
   return loaded ? (
