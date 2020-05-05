@@ -4,7 +4,7 @@ import { CaseDetail } from "./CaseDetail";
 import { PortfolioSwitch } from "./PortfolioSwitch";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 
-export const PortfolioPage = () => { 
+export default function PortfolioPage() {
   const { path } = useRouteMatch();
 
   return (
@@ -22,4 +22,4 @@ export const PortfolioPage = () => {
       <Footer />
     </>
   );
-};
+}

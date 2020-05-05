@@ -7,7 +7,7 @@ import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { APIBASE } from "../Const";
 import { Loading } from "../Loading";
 
-export const BlogPage = () => {
+export default function BlogPage() {
   const [posts, setPosts] = useState([]);
   const { path, url } = useRouteMatch();
 
@@ -15,21 +15,19 @@ export const BlogPage = () => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    posts !== [] &&
-      fetch(`${APIBASE}/posts`)
-        .then((response) =>
-          response.status > 400
-            ? setPlaceHolder(
-                `Something went wrong! Fetch Response ${response.status}`
-              )
-            : response.json()
-        )
-        .then((data) => {
-          setPosts(data);
-          setPlaceHolder(<Loading />);
-          setLoaded(true);
-        })
-        .catch((error) => console.log(error));
+    fetch(`${APIBASE}/posts`)
+      .then((response) =>
+        response.status > 400
+          ? setPlaceHolder(
+              `Something went wrong! Fetch Response ${response.status}`
+            )
+          : response.json()
+      )
+      .then((data) => {
+        setPosts(data);
+        setLoaded(true);
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   return loaded ? (
@@ -66,7 +64,7 @@ export const BlogPage = () => {
   ) : (
     placeHolder
   );
-};
+}
 
 const SMyPosts = styled.div`
   width: 100%;

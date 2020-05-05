@@ -17,7 +17,7 @@ const skills = [
   { skill: "AutoCAD", percentage: 80 },
 ];
 
-export const AboutPage = () => {
+export default function AboutPage() {
   return (
     <>
       <SMyInfo id="SMyInfo">
@@ -53,7 +53,7 @@ export const AboutPage = () => {
       <Footer />
     </>
   );
-};
+}
 
 const SMyInfo = styled.div`
   width: 100%;

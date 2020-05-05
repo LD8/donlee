@@ -1,12 +1,13 @@
-import React from "react";
+import React, { Suspense } from "react";
 import styled from "styled-components";
 import { NotFound } from "./NotFound";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
+import { Loading } from "./Loading";
 
 export default function Main({ params }) {
   const location = useLocation();
-  // console.log(location)
+
   const transitions = useTransition(location, (location) => location.pathname, {
     from: { opacity: 0, transform: "translate3d(100%,0,0)" },
     enter: { opacity: 1, transform: "translate3d(0%,0,0)" },
@@ -16,21 +17,23 @@ export default function Main({ params }) {
     <SMain id="main">
       {transitions.map(({ item: location, props, key }) => (
         <animated.div key={key} style={props}>
-          <Switch location={location}>
-            <Route exact path="/" />
-            {params.map(([param, Component]) => (
-              <Route
-                key={param}
-                path={`/${param}`}
-                render={() => (
-                  <SPageContainer>
-                    <div className="scroll-page">{Component}</div>
-                  </SPageContainer>
-                )}
-              />
-            ))}
-            <Route path="*" component={NotFound} />
-          </Switch>
+          <Suspense fallback={<Loading />}>
+            <Switch location={location}>
+              <Route exact path="/" />
+              {params.map(([param, Component]) => (
+                <Route
+                  key={param}
+                  path={`/${param}`}
+                  render={() => (
+                    <SPageContainer>
+                      <div className="scroll-page">{Component}</div>
+                    </SPageContainer>
+                  )}
+                />
+              ))}
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </Suspense>
         </animated.div>
       ))}
     </SMain>

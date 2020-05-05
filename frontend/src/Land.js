@@ -1,14 +1,19 @@
-import React, { Suspense } from "react";
+import React, { lazy } from "react";
 import styled from "styled-components";
 import Nav from "./components/Nav";
 import Main from "./components/Main";
 import Quote from "./components/Quote";
-import { AboutPage } from "./components/AboutPage/AboutPage";
-import { PortfolioPage } from "./components/PortfolioPage/PortfolioPage";
-import { BlogPage } from "./components/BlogPage/BlogPage";
+// import { AboutPage } from "./components/AboutPage/AboutPage";
+// import { PortfolioPage } from "./components/PortfolioPage/PortfolioPage";
+// import { BlogPage } from "./components/BlogPage/BlogPage";
 // import { CVPage } from "./components/CVPage/CVPage";
 import { Route, Switch, useLocation } from "react-router-dom";
-import { Loading } from "./components/Loading";
+
+const AboutPage = lazy(() => import("./components/AboutPage/AboutPage"));
+const PortfolioPage = lazy(() =>
+  import("./components/PortfolioPage/PortfolioPage")
+);
+const BlogPage = lazy(() => import("./components/BlogPage/BlogPage"));
 
 const params = [
   ["about", <AboutPage />],
@@ -20,19 +25,17 @@ export default function Land() {
   const { pathname } = useLocation();
   const isLanding = pathname === "/";
   return (
-    <Suspense fallback={<Loading />}>
-      <Switch>
-        {/* <Route path="/cv" component={CVPage} /> */}
-        <Route path="/">
-          <SContainer id="SContainer">
-            <SBGDimmer darken={isLanding} id="SBGDimmer" />
-            <Nav params={params} />
-            <Main params={params} />
-            <Quote transparent={isLanding} />
-          </SContainer>
-        </Route>
-      </Switch>
-    </Suspense>
+    <Switch>
+      {/* <Route path="/cv" component={CVPage} /> */}
+      <Route path="/">
+        <SContainer id="SContainer">
+          <SBGDimmer darken={isLanding} id="SBGDimmer" />
+          <Nav params={params} />
+          <Main params={params} />
+          <Quote transparent={isLanding} />
+        </SContainer>
+      </Route>
+    </Switch>
   );
 }
 
