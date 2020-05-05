@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import styled from "styled-components";
 import { NotFound } from "./NotFound";
 import { Route, Switch, useLocation } from "react-router-dom";
@@ -17,7 +17,6 @@ export default function Main({ params }) {
     <SMain id="main">
       {transitions.map(({ item: location, props, key }) => (
         <animated.div key={key} style={props}>
-          <Suspense fallback={<Loading />}>
             <Switch location={location}>
               <Route exact path="/" />
               {params.map(([param, Component]) => (
@@ -33,7 +32,6 @@ export default function Main({ params }) {
               ))}
               <Route path="*" component={NotFound} />
             </Switch>
-          </Suspense>
         </animated.div>
       ))}
     </SMain>

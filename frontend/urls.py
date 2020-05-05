@@ -9,5 +9,5 @@ urlpatterns = [
 
     # path() method doesn't work with react router for some reason
     # `(?!api)` negative lookahead, not a match if the path starts with 'api'
-    re_path(r'^(?!api)(?!admin)(?!cv)(?:.*)/?$', TemplateView.as_view(template_name="frontend/exp.html")),
+    re_path(r'^(?!api)(?!admin)(?!cv)(?:.*)/?$', TemplateView.as_view(template_name="frontend/index.html")),
 ]
