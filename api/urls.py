@@ -3,7 +3,7 @@ from . import views
 
 app_name = 'api'
 urlpatterns = [
-    path('', views.api_overview, name='api-overview'),
+    path('', views.api_overview),
 
     path('showcases/', views.ShowcaseListView.as_view()),
     path('showcases/<int:pk>/', views.ShowcaseDetailView.as_view()),
@@ -12,8 +12,7 @@ urlpatterns = [
 
     path('posts/', views.PostListView.as_view()),
     path('posts/<int:pk>/', views.PostDetailView.as_view()),
-    # will finish post tag searching later
-    # path('posts/tags/', views.TagListView.as_view()),
-    # path('posts/tags/<int:pk>/', views.PostUnderOneTagView.as_view()),
+    path('posts/tags/', views.TagListView.as_view()),
+    # path('posts/tags/<int:pk>/', views.PostTagQ.as_view()),
 
 ]

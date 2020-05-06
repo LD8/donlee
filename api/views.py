@@ -19,10 +19,9 @@ class ShowcaseLabelQ(generics.ListAPIView):
         return Showcase.objects.filter(labels=label)
 
 
-# will finish post tag searching later
-# class TagListView(generics.ListAPIView):
-#     queryset = Tag.objects.all()
-#     serializer_class = TagSerializer
+class TagListView(generics.ListAPIView):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
 
 
 class ShowcaseListView(generics.ListAPIView):
