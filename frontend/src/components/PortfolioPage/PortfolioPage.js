@@ -4,7 +4,7 @@ import { CaseDetail } from "./CaseDetail";
 import { PortfolioSwitch } from "./PortfolioSwitch";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 
-export default function PortfolioPage() {
+export default function PortfolioPage(props) {
   const { path } = useRouteMatch();
 
   return (
@@ -14,9 +14,9 @@ export default function PortfolioPage() {
           exact
           path={`${path}/showcases/:id/:slug`}
           validate={(params) => Number.isInteger(params.id)}
-          render={() => <CaseDetail />}
+          render={() => <CaseDetail showcases={props.showcases} />}
         />
-        <Route path={path} render={() => <PortfolioSwitch />} />
+        <Route path={path} render={() => <PortfolioSwitch {...props} />} />
       </Switch>
 
       <Footer />

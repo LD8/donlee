@@ -12,14 +12,14 @@ export const Tags = ({ tags }) => {
 };
 
 const STags = styled.ul`
-  margin: 15px 0;
+  margin: 8px 0;
   list-style: none;
   display: flex;
-  justify-content:center;
+  flex-wrap: wrap;
+  justify-content: center;
   li {
-    width: auto;
     height: 20px;
-    margin: 0 10px 0 0;
+    margin: 8px 10px 0 0;
     padding: 2px 10px;
     display: flex;
     justify-content: center;

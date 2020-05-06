@@ -1,40 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Showcase } from "./Showcase";
 import { useParams } from "react-router-dom";
-import { APIBASE } from "../Const";
 import { Loading } from "../Loading";
 
-export const ShowcaseLabelQ = ({ url }) => {
-  const { id: paramId } = useParams();
+export const ShowcaseLabelQ = ({ showcases, url }) => {
+  const { slug } = useParams();
+  const filteredShowcases = showcases.filter((showcase) =>
+    showcase.labels.map(t=>t.toLowerCase()).includes(slug)
+  );
 
-  const [showcases, setShowcases] = useState([]);
-
-  const [placeHolder, setPlaceHolder] = useState(<Loading />);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    fetch(`${APIBASE}/showcases/labels/${paramId}`)
-      .then((response) =>
-        response.status > 400
-          ? setPlaceHolder(
-              `Something went wrong! Fetch Response ${response.status}`
-            )
-          : response.json()
-      )
-      .then((data) => {
-        setShowcases(data);
-        setLoaded(true);
-      })
-      .catch((error) => console.log(error));
-  }, [paramId]);
-
-  return loaded ? (
+  return filteredShowcases ? (
     <>
-      {showcases.map((showcase) => (
+      {filteredShowcases.map((showcase) => (
         <Showcase key={showcase.id} showcase={showcase} url={url} />
       ))}
     </>
   ) : (
-    placeHolder
+    <Loading />
   );
 };

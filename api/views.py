@@ -11,12 +11,12 @@ class LabelListView(generics.ListAPIView):
     serializer_class = LabelSerializer
 
 
-class ShowcaseLabelQ(generics.ListAPIView):
-    serializer_class = ShowcaseSerializer
+# class ShowcaseLabelQ(generics.ListAPIView):
+#     serializer_class = ShowcaseSerializer
 
-    def get_queryset(self):
-        label = get_object_or_404(Label, pk=self.kwargs['label_pk'])
-        return Showcase.objects.filter(labels=label)
+#     def get_queryset(self):
+#         label = get_object_or_404(Label, pk=self.kwargs['label_pk'])
+#         return Showcase.objects.filter(labels=label)
 
 
 class TagListView(generics.ListAPIView):

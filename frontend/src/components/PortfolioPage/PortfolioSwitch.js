@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Showcase } from "./Showcase";
 import { ShowcaseLabelQ } from "./ShowcaseLabelQ";
@@ -6,54 +6,10 @@ import { TechLabelSwitch } from "./TechLabelSwitch";
 import slugifyText from "../Utils.js";
 import { Link } from "react-router-dom";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
-import { APIBASE } from "../Const";
 import { Loading } from "../Loading";
 
-export const PortfolioSwitch = () => {
-  const [showcases, setShowcases] = useState([]);
-  const [labels, setLabels] = useState([]);
+export const PortfolioSwitch = ({ showcases, labels }) => {
   const { path, url } = useRouteMatch();
-
-  const [placeHolder, setPlaceHolder] = useState(<Loading />);
-  const [casesLoaded, setCasesLoaded] = useState(false);
-  const [labelLoaded, setLabelLoaded] = useState(false);
-
-  const fetchCases = () => {
-    fetch(`${APIBASE}/showcases/`)
-      .then((response) =>
-        response.status > 400
-          ? setPlaceHolder(
-              `Something went wrong with fetching showcases! Fetch Response ${response.status}`
-            )
-          : response.json()
-      )
-      .then((data) => {
-        setShowcases(data);
-        setCasesLoaded(true);
-      })
-      .catch((error) => console.log(error));
-  };
-
-  const fetchLabels = () => {
-    fetch(`${APIBASE}/showcases/labels`)
-      .then((response) =>
-        response.status > 400
-          ? setPlaceHolder(
-              `Something went wrong with fetching labels! Fetch Response ${response.status}`
-            )
-          : response.json()
-      )
-      .then((data) => {
-        setLabels(data);
-        setLabelLoaded(true);
-      })
-      .catch((error) => console.log(error));
-  };
-
-  useEffect(() => {
-    fetchCases();
-    fetchLabels();
-  }, []);
 
   return (
     <SMyPortfolio id="SMyPortfolio">
@@ -80,7 +36,7 @@ export const PortfolioSwitch = () => {
       </section>
 
       <section className="showcases">
-        {casesLoaded && labelLoaded ? (
+        {showcases && labels ? (
           <Switch>
             <Route
               exact
@@ -97,11 +53,11 @@ export const PortfolioSwitch = () => {
               exact
               path={`${path}/showcases/labels/:id/:slug`}
               validate={(params) => Number.isInteger(params.id)}
-              render={() => <ShowcaseLabelQ url={url} />}
+              render={() => <ShowcaseLabelQ showcases={showcases} url={url} />}
             />
           </Switch>
         ) : (
-          placeHolder
+          <Loading />
         )}
       </section>
     </SMyPortfolio>

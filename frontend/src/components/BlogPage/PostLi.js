@@ -53,6 +53,7 @@ const SPostLi = styled.li`
   .content {
     margin: 10px 0;
     font-weight: 350;
+    overflow: hidden;
     a {
       color: var(--whitegreen);
       :visited {

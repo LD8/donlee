@@ -1,37 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { Tags } from "./Tags";
-import { APIBASE } from "../Const";
 import ReactMarkdown from "react-markdown";
 import CodeBlock from "./CodeBlock.js";
 import { Loading } from "../Loading";
 
-export const PostDetail = () => {
-  const { id: paramId } = useParams();
-  const [post, setPost] = useState({});
+export const PostDetail = ({ posts }) => {
+  const { id } = useParams();
+  const post = posts.filter((post) => post.id.toString() === id)[0];
   const { title, tags, content, uploaded_date } = post;
 
-  const [placeHolder, setPlaceHolder] = useState(<Loading />);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    fetch(`${APIBASE}/posts/${paramId}`)
-      .then((response) =>
-        response.status > 400
-          ? setPlaceHolder(
-              `Something went wrong! Fetch Response ${response.status}`
-            )
-          : response.json()
-      )
-      .then((data) => {
-        setPost(data);
-        setLoaded(true);
-      })
-      .catch((error) => console.log(error));
-  }, [paramId]);
-
-  return loaded ? (
+  return post ? (
     <SPostDetail>
       <h1 className="title">{title}</h1>
       <hr />
@@ -44,7 +24,7 @@ export const PostDetail = () => {
       <p className="date">{uploaded_date && uploaded_date.slice(0, 10)}</p>
     </SPostDetail>
   ) : (
-    placeHolder
+    <Loading />
   );
 };
 

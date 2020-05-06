@@ -1,110 +1,103 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import { APIBASE } from "../Const";
 import { ImgCarousel } from "./ImgCarousel";
 import { Loading } from "../Loading";
 
-export const CaseDetail = () => {
-  const [showcase, setShowcase] = useState({});
-  const { id: caseID } = useParams();
+export const CaseDetail = ({ showcases }) => {
+  const { id } = useParams();
+  const showcase = showcases.filter(
+    (showcase) => showcase.id.toString() === id.toString()
+  )[0];
 
-  const [placeholder, setPlaceholder] = useState(<Loading />);
-  const [loaded, setLoaded] = useState(false);
+  let renderDetail;
+  
+  if (showcase) {
+    const {
+      name,
+      img_front,
+      img_back,
+      img_third,
+      brief,
+      about,
+      techs,
+      link_online,
+      link_github,
+      link_codesandbox,
+    } = showcase;
 
-  useEffect(() => {
-    fetch(`${APIBASE}/showcases/${caseID}/`)
-      .then((response) =>
-        response.status > 400
-          ? setPlaceholder(
-              `Something went wrong! Fetch Response ${response.status}`
-            )
-          : response.json()
-      )
-      .then((data) => {
-        setShowcase(data);
-        setLoaded(true);
-        // console.log(data);
-      })
-      .catch((error) => console.log(error));
-  }, [caseID]);
+    const imgLinks = [img_front, img_back, img_third].filter(
+      (link) => link !== null
+    );
 
-  const {
-    name,
-    img_front,
-    img_back,
-    img_third,
-    brief,
-    about,
-    techs,
-    link_online,
-    link_github,
-    link_codesandbox,
-  } = showcase;
-
-  const imgLinks = [img_front, img_back, img_third].filter(
-    (link) => link !== null
-  );
-
-  return loaded ? (
-    <SCaseDetail>
-      <div className="intro">
-        <h1>{name}</h1>
-        <p>{brief}</p>
-        {/* carousel here to be made */}
-        <ImgCarousel imgLinks={imgLinks} />
-      </div>
-      <section className="about">
-        <h2>About this project</h2>
-        <p>{about}</p>
-      </section>
-      <section className="technical-sheet">
-        <h2>Technical Sheet</h2>
-        <ul>
-          {techs.map((tech, i) => (
-            <li key={i}>{tech}</li>
-          ))}
-        </ul>
-      </section>
-      {(link_online || link_github || link_codesandbox) && (
-        <section className="resources">
-          <h2>Resources</h2>
+    renderDetail = (
+      <SCaseDetail>
+        <div className="intro">
+          <h1>{name}</h1>
+          <p>{brief}</p>
+          {/* carousel here to be made */}
+          <ImgCarousel imgLinks={imgLinks} />
+        </div>
+        <section className="about">
+          <h2>About this project</h2>
+          <p>{about}</p>
+        </section>
+        <section className="technical-sheet">
+          <h2>Technical Sheet</h2>
           <ul>
-            {link_online && (
-              <li>
-                <span>Visit the website:</span>
-                <a target="_blank" rel="noopener noreferrer" href={link_online}>
-                  {link_online.toUpperCase()}
-                </a>
-              </li>
-            )}
-            {link_github && (
-              <li>
-                <span>GitHub source files:</span>
-                <a target="_blank" rel="noopener noreferrer" href={link_github}>
-                  {link_github.toUpperCase()}
-                </a>
-              </li>
-            )}
-            {link_codesandbox && (
-              <li>
-                <span>Code-Sandbox:</span>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={link_codesandbox}
-                >
-                  Portal Here
-                </a>
-              </li>
-            )}
+            {techs.map((tech, i) => (
+              <li key={i}>{tech}</li>
+            ))}
           </ul>
         </section>
-      )}
-    </SCaseDetail>
-  ) : (
-    placeholder
-  );
+        {(link_online || link_github || link_codesandbox) && (
+          <section className="resources">
+            <h2>Resources</h2>
+            <ul>
+              {link_online && (
+                <li>
+                  <span>Visit the website:</span>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={link_online}
+                  >
+                    {link_online.toUpperCase()}
+                  </a>
+                </li>
+              )}
+              {link_github && (
+                <li>
+                  <span>GitHub source files:</span>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={link_github}
+                  >
+                    {link_github.toUpperCase()}
+                  </a>
+                </li>
+              )}
+              {link_codesandbox && (
+                <li>
+                  <span>Code-Sandbox:</span>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={link_codesandbox}
+                  >
+                    Portal Here
+                  </a>
+                </li>
+              )}
+            </ul>
+          </section>
+        )}
+      </SCaseDetail>
+    );
+  }
+
+  return showcase ? renderDetail : <Loading />;
 };
 
 const SCaseDetail = styled.div`

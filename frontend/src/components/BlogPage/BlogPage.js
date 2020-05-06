@@ -1,55 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Footer } from "../Footer";
 import { PostLi } from "./PostLi";
 import { PostDetail } from "./PostDetail";
+import { PostFilter } from "./PostFilter";
+import { FilteredPosts } from "./FilteredPosts";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
-import { APIBASE } from "../Const";
 import { Loading } from "../Loading";
 
-export default function BlogPage() {
-  const [posts, setPosts] = useState([]);
+export default function BlogPage({ posts, tags }) {
   const { path, url } = useRouteMatch();
 
-  const [placeHolder, setPlaceHolder] = useState(<Loading />);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    fetch(`${APIBASE}/posts`)
-      .then((response) =>
-        response.status > 400
-          ? setPlaceHolder(
-              `Something went wrong! Fetch Response ${response.status}`
-            )
-          : response.json()
-      )
-      .then((data) => {
-        setPosts(data);
-        setLoaded(true);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
-  return loaded ? (
+  return posts && tags ? (
     <>
       <Switch>
         <Route
           exact
           path={path}
           render={() => (
-            <SMyPosts id="SMyPosts">
-              <section className="brief">
-                <h3>Posts about my life and work.</h3>
-              </section>
+            <>
+              <PostFilter tags={tags} />
+              <SMyPosts id="SMyPosts">
+                <section className="brief">
+                  <h3>Posts about my life and work.</h3>
+                </section>
 
-              <section className="posts">
-                <ul>
-                  {posts.map((post, index) => (
-                    <PostLi key={index} post={post} url={url} />
-                  ))}
-                </ul>
-              </section>
-            </SMyPosts>
+                <section className="posts">
+                  <ul>
+                    {posts.map((post, index) => (
+                      <PostLi key={index} post={post} url={url} />
+                    ))}
+                  </ul>
+                </section>
+              </SMyPosts>
+            </>
           )}
         />
         <Route
@@ -58,17 +42,29 @@ export default function BlogPage() {
           validate={(params) => Number.isInteger(params.id)}
           render={() => <PostDetail posts={posts} />}
         />
+        <Route
+          exact
+          path={`/blog/tags/:id/:name`}
+          validate={(params) => Number.isInteger(params.id)}
+          render={() => (
+            <>
+              <PostFilter tags={tags} />
+              <FilteredPosts posts={posts} url={url} />
+            </>
+          )}
+        />
       </Switch>
       <Footer />
     </>
   ) : (
-    placeHolder
+    <Loading />
   );
 }
 
-const SMyPosts = styled.div`
+export const SMyPosts = styled.div`
   width: 100%;
-  max-width: 1000px;
+  max-width: 600px;
+  /* z-index: 10; */
 
   .brief {
     margin: 3vh 0 5vh 0;
