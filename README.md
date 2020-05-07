@@ -1,6 +1,5 @@
 ## DonLee.online
 
----
 
 DonLee.online](https://donlee.online) is a website where Don's web development projects are presented as well as his blogs.
 
@@ -10,7 +9,6 @@ It is built with `React.js` for front-end and `Django`, `PostgreSQL` for back-en
 
 ## Deployment on VPS - Ubuntu 18.04
 
----
 
 When deploying a React&Django app, that is assuming a react app and a Django api (employing [Django REST framework](https://www.django-rest-framework.org/)) are fully functional, three major blocks need to be done: 
 1. Front-end packaging
