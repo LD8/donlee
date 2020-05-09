@@ -245,6 +245,16 @@ main {
         display: flex;
         flex-direction: column;
 
+        a {
+            text-decoration: none;
+            font-weight: 300;
+            color: var(--theme-color);
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        
         .sub-title {
             width: var(--main-width);
             margin-left: auto;
@@ -273,16 +283,6 @@ main {
 
                 .year {
                     font-weight: 300;
-                }
-
-                a {
-                    text-decoration: none;
-                    font-weight: 300;
-                    color: var(--theme-color);
-
-                    &:hover {
-                        text-decoration: underline;
-                    }
                 }
             }
 

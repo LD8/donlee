@@ -171,6 +171,18 @@ main {
     /* margin-left: auto; */
     display: flex;
     flex-direction: column; }
+    main .skills a,
+    main .experience a,
+    main .education a,
+    main .other a {
+      text-decoration: none;
+      font-weight: 300;
+      color: var(--theme-color); }
+      main .skills a:hover,
+      main .experience a:hover,
+      main .education a:hover,
+      main .other a:hover {
+        text-decoration: underline; }
     main .skills .sub-title,
     main .experience .sub-title,
     main .education .sub-title,
@@ -207,18 +219,6 @@ main {
         main .education .sub-container .aside .year,
         main .other .sub-container .aside .year {
           font-weight: 300; }
-        main .skills .sub-container .aside a,
-        main .experience .sub-container .aside a,
-        main .education .sub-container .aside a,
-        main .other .sub-container .aside a {
-          text-decoration: none;
-          font-weight: 300;
-          color: var(--theme-color); }
-          main .skills .sub-container .aside a:hover,
-          main .experience .sub-container .aside a:hover,
-          main .education .sub-container .aside a:hover,
-          main .other .sub-container .aside a:hover {
-            text-decoration: underline; }
       main .skills .sub-container .details,
       main .experience .sub-container .details,
       main .education .sub-container .details,
