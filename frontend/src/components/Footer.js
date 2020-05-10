@@ -9,19 +9,19 @@ const icons = [
   {
     name: "Email",
     imageSource: At,
-    altText: "Email address: Mail to Don Lee at don_lee@me.com",
+    altText: "Email address: Mail to Peiwen Li at don_lee@me.com",
     href: "mailto: don_lee@me.com",
   },
   {
     name: "CV",
     imageSource: CV,
-    altText: "CV/Resumé of Don Lee, click to view",
+    altText: "CV/Resumé of Peiwen Li, click to view",
     href: "",
   },
   {
     name: "Github",
     imageSource: Github,
-    altText: "Github account of Don Lee",
+    altText: "Github account of Peiwen Li",
     href: "https://github.com/LD8",
   },
 ];

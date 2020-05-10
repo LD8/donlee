@@ -1,9 +1,9 @@
 from django.contrib import admin
 from .models import Post, Tag, Showcase, Label, Tech
 
-admin.site.site_header = "Don Lee's | Site Administration | Such Fun!!"
+admin.site.site_header = "Peiwen Li's | Site Administration | Such Fun!!"
 admin.site.index_title = "Upload posts and project details"
-admin.site.site_title = "Don Lee's Admin"
+admin.site.site_title = "Peiwen Li's Admin"
 
 
 @admin.register(Tag)

@@ -27,7 +27,7 @@ export default function AboutPage() {
             altText={"my portrait"}
           />
           <div className="my-info">
-            <h2>Don Lee</h2>
+            <h2>Peiwen Li</h2>
             <h4>Full-stack Developer</h4>
             <p>
               Passionate in developing software that brings happiness and light
