@@ -53,6 +53,16 @@ const SPostDetail = styled.div`
       font-weight: 600;
       margin: 2vh 0;
     }
+    img {
+      margin: 2vh 0;
+      border-radius: 8px;
+      box-shadow: 0 0 8px black;
+    }
+    blockquote {
+      padding-left: 20px;
+      border-left: 5px solid rgba(170, 165, 190, 0.5);
+      border-radius: 4px;
+    }
     p {
       margin: 2vh 0;
     }
